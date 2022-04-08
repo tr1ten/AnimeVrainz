@@ -1,0 +1,13 @@
+{
+  "name": "animevrainz",
+  "type": "module",
+  "version": "0.0.1",
+  "main": "app.js",
+  "author": "tri10 <shubhi.blog@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bookshelf": "^1.2.0",
+    "knex": "^1.0.5",
+    "pg": "^8.7.3"
+  }
+}
