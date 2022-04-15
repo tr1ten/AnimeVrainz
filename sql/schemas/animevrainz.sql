@@ -68,7 +68,7 @@ ALTER TABLE animevrainz.anime_set_anime ADD FOREIGN KEY (anime_set_id) REFERENCE
 ALTER TABLE animevrainz.anime_set_anime ADD FOREIGN KEY (anime_id) REFERENCES animevrainz.anime(id);
 
 
-ALTER TABLE animevrainz.studio ADD FOREIGN KEY (id) REFERENCES animevrainz.anime_set(id);
+ALTER TABLE animevrainz.studio ADD FOREIGN KEY (id) REFERENCES animevrainz.anime_set(id) DEFERRABLE INITIALLY DEFERRED; 
 
 CREATE TABLE animevrainz.user (
     id SERIAL PRIMARY KEY,
@@ -78,7 +78,7 @@ CREATE TABLE animevrainz.user (
 
 );
 
-ALTER TABLE animevrainz.user ADD FOREIGN KEY (gender_id) REFERENCES animevrainz.gender(id) DEFERRABLE;
+ALTER TABLE animevrainz.user ADD FOREIGN KEY (gender_id) REFERENCES animevrainz.gender(id) DEFERRABLE ;
 ALTER TABLE animevrainz.user ADD FOREIGN KEY (anime_set_id) REFERENCES animevrainz.anime_set(id);
 
 

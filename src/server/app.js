@@ -1,4 +1,4 @@
-import bookshelf from "./utils/bookshelf.js";
+import bookshelf from "./helpers/bookshelf.js";
 import getOrm from "./models/index.js";
 const orm = getOrm(bookshelf);
 const gender = new orm.Gender({ label: "Female" });

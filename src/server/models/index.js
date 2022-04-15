@@ -4,7 +4,7 @@ import Gender from "./gender.js";
 import User from "./user.js";
 import AnimeCoverArt from "./animeCovertArt.js";
 import Studio from "./studio.js";
-
+import StudioSet from "./studioSet.js";
 export default function init(bookshelf) {
   return {
     Anime: Anime(bookshelf),
@@ -13,5 +13,7 @@ export default function init(bookshelf) {
     User: User(bookshelf),
     AnimeCoverArt: AnimeCoverArt(bookshelf),
     Studio: Studio(bookshelf),
+    StudioSet:StudioSet(bookshelf),
+    bookshelf
   };
 }
