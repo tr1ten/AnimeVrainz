@@ -7,7 +7,7 @@ const dbConfig = {
       database : 'animevrainz',
       charset  : 'utf8'
     },
-    debug:true
+    debug:false
   }
 
   export default dbConfig;

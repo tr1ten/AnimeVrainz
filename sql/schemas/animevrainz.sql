@@ -1,8 +1,4 @@
 BEGIN;
-CREATE TYPE animevrainz.gender AS ENUM (
-    'MALE',
-    'FEMALE'
-);
 
 CREATE TABLE animevrainz.gender (
     label TEXT NOT NULL,
@@ -18,19 +14,21 @@ CREATE TABLE animevrainz.anime (
     title TEXT NOT NULL,
     sequel_id INT,
     prequel_id INT,
-    character_set_id INT
+    character_set_id INT,
+    cover_art_id INT,
 );
 
-ALTER TABLE animevrainz.anime ADD COLUMN cover_art_id INT NOT NULL;
-ALTER TABLE animevrainz.anime ADD FOREIGN KEY(cover_art_id) REFERENCES animevrainz.anime_cover_art (id);
 
 CREATE TABLE animevrainz.anime_cover_art( 
     id SERIAL PRIMARY KEY,
     image_url VARCHAR DEFAULT 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png'
 );
 
+ALTER TABLE animevrainz.anime ADD FOREIGN KEY(cover_art_id) REFERENCES animevrainz.anime_cover_art (id);
+
 ALTER TABLE animevrainz.anime ADD FOREIGN KEY (sequel_id) REFERENCES animevrainz.anime (id);
 ALTER TABLE animevrainz.anime ADD FOREIGN KEY (prequel_id) REFERENCES animevrainz.anime (id);
+
 
 CREATE TABLE animevrainz.studio (
     id SERIAL PRIMARY KEY,
@@ -68,7 +66,7 @@ ALTER TABLE animevrainz.anime_set_anime ADD FOREIGN KEY (anime_set_id) REFERENCE
 ALTER TABLE animevrainz.anime_set_anime ADD FOREIGN KEY (anime_id) REFERENCES animevrainz.anime(id);
 
 
-ALTER TABLE animevrainz.studio ADD FOREIGN KEY (id) REFERENCES animevrainz.anime_set(id) DEFERRABLE INITIALLY DEFERRED; 
+ALTER TABLE animevrainz.studio ADD FOREIGN KEY (anime_set_id) REFERENCES animevrainz.anime_set(id) DEFERRABLE; 
 
 CREATE TABLE animevrainz.user (
     id SERIAL PRIMARY KEY,
